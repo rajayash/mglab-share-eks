@@ -91,10 +91,10 @@ terraform state list
 ```
 
 #### 4: Generate a kubeconfig & Access the EKS Cluster with kubectl.
-- Install kubectl & review your kubeconfig:
+- Install kubectl & review your kubeconfig:  https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 ```
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.16/2023-01-30/bin/linux/amd64/kubectl
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.16/2023-01-30/bin/linux/amd64/kubectl.sha256
 echo "$(<kubectl.sha256) kubectl" | sha256sum --check
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
@@ -122,8 +122,14 @@ kubectl get nodes
 ```
 kubectl logs deployment.app/cluster-autoscaler-aws-cluster-autoscaler -f -n kube-system
 ```
-#### 7b: deploy the Amazon EFS CSI Driver to your Amazon EKS cluster and verify that it works.
-
+#### 7b: Deploy the Amazon EFS CSI Driver to your Amazon EKS cluster and verify that it works.
+- https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html (to install eksctl)
+- https://helm.sh/docs/intro/install/ (to install helm 3.8.2)
+```
+wget https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
+tar -zxvf helm-v3.8.2-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin  
+```
 - https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
 
 
