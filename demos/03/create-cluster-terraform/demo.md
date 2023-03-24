@@ -111,12 +111,15 @@ kubectl get all -A
 kubectl get nodes
 ```
 
-#### 7: Test the Cluster Autoscaler.
+#### 7a: Test the Cluster Autoscaler.
 
 - Confirm the Cluster Autoscaler is functional, use _ctrl-c_ to exit:
 ```
 kubectl logs deployment.app/cluster-autoscaler-aws-cluster-autoscaler -f -n kube-system
 ```
+#### 7b: deploy the Amazon EFS CSI Driver to your Amazon EKS cluster and verify that it works.
+
+- https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
 
 
 #### 8: Deploy Wordpress app front end on Fargate & Mysql backend on managed Nodegroup.
