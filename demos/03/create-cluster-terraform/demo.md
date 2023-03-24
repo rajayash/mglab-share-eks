@@ -49,6 +49,9 @@ echo $C9_AWS_ACCT
     - If set correctly you will see the following in your response: `SAFE TO CREATE CLUSTER :)`, else the py script will either return _NOT SAFE_ or will fail to run.
 
 ```
+curl -O https://bootstrap.pypa.io/pip/3.6/get-pip.py
+python3 get-pip.py --user
+export PATH=~/.local/bin:$PATH
 sudo pip install boto3
 export AWS_DEFAULT_REGION=$C9_REGION
 python3 ./pre-reqs/check-c9-autocreds.py --region $C9_REGION --c9envname c9-eks-demo-dev-wkstn
