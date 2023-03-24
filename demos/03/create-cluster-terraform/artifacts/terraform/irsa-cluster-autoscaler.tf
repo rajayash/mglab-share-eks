@@ -95,7 +95,7 @@ resource "helm_release" "cluster-autoscaler" {
   namespace        = local.k8s_service_account_namespace
   repository       = "https://kubernetes.github.io/autoscaler"
   chart            = "cluster-autoscaler"
-  version          = "9.10.7"
+  version          = "9.26.0"
   create_namespace = false
 
   set {
