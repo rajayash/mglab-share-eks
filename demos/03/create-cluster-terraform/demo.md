@@ -48,11 +48,15 @@ echo $C9_AWS_ACCT
 - Verify that AWS Managed Temporary Credentials have been disabled.  If not set correctly, please re-visit [DEMO LINK: 00-setup-cloud9](demos/00-setup-cloud9/demo.md) and check steps.
     - If set correctly you will see the following in your response: `SAFE TO CREATE CLUSTER :)`, else the py script will either return _NOT SAFE_ or will fail to run.
 
+- check the version of pip and install boto3
 ```
+sudo su
 curl -O https://bootstrap.pypa.io/pip/3.6/get-pip.py
 python3 get-pip.py --user
 export PATH=~/.local/bin:$PATH
-sudo pip install boto3
+pip install boto3
+```
+```
 export AWS_DEFAULT_REGION=$C9_REGION
 python3 ./pre-reqs/check-c9-autocreds.py --region $C9_REGION --c9envname c9-eks-demo-dev-wkstn
 ```
