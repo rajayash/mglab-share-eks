@@ -65,6 +65,7 @@ sudo yum -y install terraform
 ```
 
 #### 2: Test the EKS tf templates by running a 'plan'
+- Edit demos/03/create-cluster-terraform/artifacts/terraform/variables.tf, change the default region
 - Init the required terraform modules to create the EKS cluster:
 ```
 cd artifacts/terraform/
