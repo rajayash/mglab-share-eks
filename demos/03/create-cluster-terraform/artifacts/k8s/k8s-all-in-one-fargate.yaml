@@ -19,7 +19,7 @@ data:
         region <REGION>
         log_group_name fluent-bit-cloudwatch
         log_stream_prefix from-fluent-bit-
-        auto_create_group On
+        auto_create_group true
 ---
 apiVersion: v1
 kind: Namespace
@@ -34,7 +34,7 @@ metadata:
   name: wordpress-config
   namespace: wordpress-fargate
 data:
-  database: wordpress
+  database: wordpress-mysql
 ---
 kind: Secret
 metadata:
@@ -70,7 +70,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  #storageClassName: gp2
+  storageClassName: gp2
   resources:
     requests:
       storage: 8Gi
@@ -96,8 +96,11 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: public.ecr.aws/u3e9a9s8/eks-demo-mysql:5.6
+      - image: mysql:5.7
         name: mysql
+        securityContext:
+          runAsUser: 1000
+          allowPrivilegeEscalation: false 
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -174,11 +177,16 @@ spec:
         fargate: "true"
     spec:
       containers:
-      - image: public.ecr.aws/u3e9a9s8/eks-demo-wordpress:4.7-apache
+      - image: wordpress:latest
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
+        - name: WORDPRESS_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: wordpress-config
+              key: database  
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
