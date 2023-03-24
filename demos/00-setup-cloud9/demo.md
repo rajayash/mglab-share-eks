@@ -71,12 +71,7 @@ env_id=$(
   - Open [https://console.aws.amazon.com/cloud9/home?](https://console.aws.amazon.com/cloud9/home?)
   - Open the created IDE to exec all remaining demo commands from within the new C9 instance's IDE terminal
 ```
-cd ~/environment
-git config --global user.name "demo user"
-git config --global user.email demo@bwer432.io
-if [ ! -d mglab-share-eks ]; then git clone https://github.com/bwer432/mglab-share-eks.git; fi
-chmod 755 ./mglab-share-eks/demos/00-setup-cloud9/pre-reqs/resize.sh
-./mglab-share-eks/demos/00-setup-cloud9/pre-reqs/resize.sh
+
 ```
 - **!!!** **DISABLE** **!!!** AWS Managed Temporary Credentials in the Cloud9 IDE instance **!!!**
 
@@ -96,6 +91,14 @@ clear
 echo $C9_REGION
 echo $C9_AWS_ACCT
 ```
+
+
+cd ~/environment
+git config --global user.name "demo user"
+git config --global user.email demo@bwer432.io
+if [ ! -d mglab-share-eks ]; then git clone https://github.com/bwer432/mglab-share-eks.git; fi
+chmod 755 ./mglab-share-eks/demos/00-setup-cloud9/pre-reqs/resize.sh
+./mglab-share-eks/demos/00-setup-cloud9/pre-reqs/resize.sh
 ---------------------------------------------------------------
 ---------------------------------------------------------------
 ### DEPENDENTS
