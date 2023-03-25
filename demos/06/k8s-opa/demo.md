@@ -72,7 +72,7 @@ kubectl apply -f ./artifacts/opa/pod-limits-constraint.yaml
 ```
 kubectl run opa-demo --image=nginx --port=80 --restart=Never
 ```
-- Create good pod:
+- Create good pod:  NOTE:  Flag --limits has been deprecated, has no effect and will be removed in 1.24.
 ```
 kubectl run opa-demo --image=nginx --port=80 --restart=Never --limits=cpu=400m,memory=800Mi
 ```
