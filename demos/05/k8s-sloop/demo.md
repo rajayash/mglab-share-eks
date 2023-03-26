@@ -39,13 +39,32 @@ echo $C9_REGION
 echo $C9_AWS_ACCT
 ```
 
-#### 1: Clone the Sloop source code, which includes a helm chart.
+#### 1a: Clone the Sloop source code, which includes a helm chart.
 - The source code for Sloop includes a Helm chart. We can install this by having a copy of the chart locally.
 ```
 git clone https://github.com/salesforce/sloop
 ```
+- Edit sloop/values.yaml and set the parameter storageclass
+```
+storageClass: sloop-sc
+```
+#### 1b: Create a storageclass.yaml in sloop/templates folder with the following content.
+```
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sloop-sc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+```
 
-#### 2: Perform a Helm install
+#### 2a: Complete the following pre-requisite steps 
+
+- Creating the Amazon EBS CSI driver IAM role for service accounts https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html
+
+- Managing the Amazon EBS CSI driver as an Amazon EKS add-on https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
+
+#### 2b: Perform a Helm install
 - This demo will create a service account that grants cluster-admin permissions to the Dashboard.  This is the highest levels of privilege, but will allow you to both visualize and manage the cluster.
 ```
 cd sloop/helm
