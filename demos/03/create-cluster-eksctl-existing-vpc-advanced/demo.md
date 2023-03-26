@@ -156,6 +156,15 @@ eksctl create cluster -f ./artifacts/DEMO-eks-eksctl-cluster.yaml
 ```
 - 'UN'-assume IAM role cluster-eksctl-creator-role:
 ```
+
+eksctl create iamidentitymapping \
+    --cluster cluster-eksctl \
+    --region us-west-1 \
+    --arn arn:aws:iam::<ACCOUNTID>:user/<AWSIAMUSER> \
+    --group system:masters \
+    --no-duplicate-arns \
+    --username admin
+    
 unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
 export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep aws_access_key_id | awk '{print$3}')
 export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep aws_secret_access_key | awk '{print$3}')
