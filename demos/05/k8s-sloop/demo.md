@@ -60,9 +60,9 @@ volumeBindingMode: WaitForFirstConsumer
 
 #### 2a: Complete the following pre-requisite steps 
 
-- Creating the Amazon EBS CSI driver IAM role for service accounts https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html
+- [Creating the Amazon EBS CSI driver IAM role for service accounts] (https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
 
-- Managing the Amazon EBS CSI driver as an Amazon EKS add-on https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
+- [Managing the Amazon EBS CSI driver as an Amazon EKS add-on] (https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html)
 
 #### 2b: Perform a Helm install
 - This demo will create a service account that grants cluster-admin permissions to the Dashboard.  This is the highest levels of privilege, but will allow you to both visualize and manage the cluster.
