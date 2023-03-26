@@ -45,9 +45,11 @@ eksctl utils write-kubeconfig --name cluster-eksctl --region $C9_REGION --authen
 kubectl config view --minify | grep 'cluster-name' -A 1
 kubectl get ns
 ```
-- Install istioctl:
+- Install istioctl:  istio version 1.14.1. 
 ```
-curl -L https://git.io/getLatestIstio | sh -
+export ISTIO_VERSION="1.14.1"
+cd ~/environment
+curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} | sh -
 cd istio-1.*
 sudo cp ./bin/istioctl /usr/local/bin/
 sudo chmod +x /usr/local/bin/istioctl
@@ -71,6 +73,7 @@ kubectl create namespace istio-bookinfo
 kubectl label namespace istio-bookinfo istio-injection=enabled
 ```
 - Setup Docker login credentials for bookinfo images stored in docker hub (silly rate limiting):
+- docker login username is case sensitive and doesn't work with your email address.
 ```
 docker login
 ```
