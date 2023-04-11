@@ -59,7 +59,7 @@ exit
 ```
 ```
 export AWS_DEFAULT_REGION=$C9_REGION
-python3 ./pre-reqs/check-c9-autocreds.py --region $C9_REGION --c9envname c9-eks-demo-dev-wkstn
+python3 ./pre-reqs/check-c9-autocreds.py --region $C9_REGION --c9envname c9-eks-demo-XXXXX ** replace the Cloud9 environment name
 ```
 - Install the 'terraform' CLI onto Cloud9
   - [DOC LINK: Installing Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
