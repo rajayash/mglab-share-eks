@@ -132,7 +132,7 @@ tar -zxvf helm-v3.8.2-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/local/bin  
 ```
 - https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-
+- Add "AmazonEKS_EFS_CSI_Driver_Policy" to cluster-terraform-nodeRole 
 
 #### 8: Deploy Wordpress app front end on Fargate & Mysql backend on managed Nodegroup.
 - Deploy Wordpress front & back end workloads:
