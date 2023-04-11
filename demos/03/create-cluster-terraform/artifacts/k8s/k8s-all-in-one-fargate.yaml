@@ -70,7 +70,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: gp2
+  storageClassName: efs-sc
   resources:
     requests:
       storage: 8Gi
