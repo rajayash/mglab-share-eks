@@ -166,6 +166,7 @@ echo "http://"$(kubectl get svc wordpress -n wordpress-fargate \
 ### CLEANUP
 - Do not cleanup if you plan to run any dependent demos
 - Remove "AmazonEKS_EFS_CSI_Driver_Policy" and cluster-terraform-nodeRole
+- Delete the Amazon EFS file system created for your Amazon EKS cluster
 ```
 export C9_REGION=$(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document |  grep region | awk -F '"' '{print$4}')
 export C9_AWS_ACCT=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep accountId | awk -F '"' '{print$4}')
