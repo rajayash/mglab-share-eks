@@ -55,6 +55,7 @@ curl -O https://bootstrap.pypa.io/pip/3.6/get-pip.py
 python3 get-pip.py --user
 export PATH=~/.local/bin:$PATH
 pip install boto3
+exit
 ```
 ```
 export AWS_DEFAULT_REGION=$C9_REGION
