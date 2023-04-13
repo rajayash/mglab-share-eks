@@ -48,7 +48,6 @@ kubectl get ns
 - Install istioctl:  istio version 1.14.1. 
 ```
 export ISTIO_VERSION="1.14.1"
-cd ~/environment
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} | sh -
 cd istio-1.*
 sudo cp ./bin/istioctl /usr/local/bin/
